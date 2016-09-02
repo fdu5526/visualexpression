@@ -6,18 +6,27 @@ public class BoxObject : Physics2DBody {
 	bool isDragged;
 	float initZ;
 
+
+	[SerializeField]
+	string text;
+	SentimentalText sentimentalText;
+
 	// Use this for initialization
 	protected override void Awake () {
 		base.Awake();
 		initZ = transform.position.z;
+
+		sentimentalText = (SentimentalText)FindObjectOfType<SentimentalText>();
 	}
 
 	void OnMouseDown () {
 		isDragged = true;
+		sentimentalText.SetText(text);
 	}
 
 	void OnMouseUp() {
 		isDragged = false;
+		sentimentalText.SetText("");
 	}
 
 
