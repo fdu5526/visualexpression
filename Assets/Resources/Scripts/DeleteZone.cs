@@ -9,7 +9,7 @@ public class DeleteZone : MonoBehaviour {
 	}
 
 
-	void OnCollisionEnter2D (Collision2D coll) {
+	void OnCollisionEnter (Collision coll) {
 		Destroy(coll.gameObject);
 	}
 	

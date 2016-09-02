@@ -8,6 +8,12 @@ public class Car : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Transform b = transform.Find("Body");
+		Renderer rend = b.GetComponent<Renderer>();
+		Color c = ColorHSV.GetRandomColor(Random.Range(0.0f, 360f),
+																			Random.Range(0.3f, 0.8f),
+																			Random.Range(0.3f, 0.8f));
+		rend.material.SetColor("_Color", c);
 	}
 
 	public void SetIsAway (bool isGoingAway) {
