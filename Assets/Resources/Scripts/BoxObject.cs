@@ -10,6 +10,7 @@ public class BoxObject : Physics2DBody {
 	[SerializeField]
 	string text;
 	SentimentalText sentimentalText;
+	Trashcan trashcan;
 
 	AudioSource[] audios;
 
@@ -19,6 +20,7 @@ public class BoxObject : Physics2DBody {
 		initZ = transform.position.z;
 
 		sentimentalText = FindObjectOfType<SentimentalText>();
+		trashcan = FindObjectOfType<Trashcan>();
 		audios = GetComponents<AudioSource>();
 	}
 
@@ -32,6 +34,10 @@ public class BoxObject : Physics2DBody {
 		isDragged = false;
 		sentimentalText.SetText("");
 		audios[1].Play();
+		if (trashcan.IsInTrashcan) {
+			Destroy(gameObject);
+			trashcan.PlayTrashSound();
+		}
 	}
 
 
